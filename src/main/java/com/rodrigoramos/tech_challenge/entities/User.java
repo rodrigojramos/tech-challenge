@@ -3,8 +3,11 @@ package com.rodrigoramos.tech_challenge.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "tb_user")
 public class User {
 
     @Id
@@ -15,6 +18,8 @@ public class User {
     private String login;
     private String password;
     private LocalDateTime lastModifiedAt;
+    @OneToMany(mappedBy = "user")
+    private List<Address> addresses = new ArrayList<>();
 
     public User() {
     }
@@ -65,5 +70,9 @@ public class User {
 
     public void setLastModifiedAt(LocalDateTime lastModifiedAt) {
         this.lastModifiedAt = lastModifiedAt;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
     }
 }
