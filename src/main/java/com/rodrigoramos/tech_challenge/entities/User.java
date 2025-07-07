@@ -24,12 +24,13 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String login, String password, LocalDateTime lastModifiedAt) {
+    public User(Long id, String name, String login, String password, LocalDateTime lastModifiedAt, List<Address> addresses) {
         this.id = id;
         this.name = name;
         this.login = login;
         this.password = password;
         this.lastModifiedAt = lastModifiedAt;
+        this.addresses = addresses;
     }
 
     public Long getId() {
