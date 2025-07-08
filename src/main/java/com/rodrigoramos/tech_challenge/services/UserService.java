@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -71,7 +72,7 @@ public class UserService {
                 user.getLogin(),
                 user.getPassword(),
                 user.getLastModifiedAt(),
-                addresses
+                Optional.ofNullable(user.getAddresses()).orElse(List.of())
         );
     }
 
@@ -81,7 +82,6 @@ public class UserService {
                 dto.name(),
                 dto.login(),
                 dto.password(),
-                dto.lastModifiedAt(),
                 dto.addresses()
         );
     }
